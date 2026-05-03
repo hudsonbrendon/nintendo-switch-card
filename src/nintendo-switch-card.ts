@@ -30,6 +30,27 @@ export class NintendoSwitchCard extends LitElement {
   @state() private _config?: NintendoSwitchCardConfig;
 
   setConfig(config: NintendoSwitchCardConfig): void {
+    if (!config) throw new Error("invalid_config: config is empty");
+    const hasPrefix = typeof config.entity === "string" && config.entity.length > 0;
+    const ents = config.entities ?? {};
+    const hasMinEntities = !!ents.battery_level && !!ents.is_charging;
+    if (!hasPrefix && !hasMinEntities) {
+      throw new Error(
+        "missing required entity: provide `entity:` prefix or `entities.battery_level` + `entities.is_charging`"
+      );
+    }
+    if (config.stats && config.stats.length > 4) {
+      throw new Error("invalid_config: stats can have at most 4 items");
+    }
+    if (config.image && config.image !== "switch-default") {
+      try {
+        if (!config.image.startsWith("/local/") && !config.image.startsWith("/")) {
+          new URL(config.image);
+        }
+      } catch {
+        throw new Error("invalid_config: image must be `switch-default`, a `/local/...` path, or an absolute URL");
+      }
+    }
     this._config = config;
   }
 
