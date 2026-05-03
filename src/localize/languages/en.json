@@ -1,0 +1,24 @@
+{
+  "state": {
+    "standby": "Standby",
+    "running": "Running",
+    "charging": "Charging",
+    "unavailable": "Unavailable"
+  },
+  "stat": {
+    "brightness": "Brightness",
+    "volume": "Volume",
+    "voltage": "Voltage",
+    "players": "Players"
+  },
+  "action": {
+    "reboot": "Reboot",
+    "shutdown": "Shutdown",
+    "notify": "Notify",
+    "notify_prompt": "Message to send to the Switch:"
+  },
+  "error": {
+    "no_entity": "Missing required entity configuration",
+    "invalid_config": "Invalid configuration"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "state": {
+    "standby": "Em espera",
+    "running": "Em execução",
+    "charging": "Carregando",
+    "unavailable": "Indisponível"
+  },
+  "stat": {
+    "brightness": "Brilho",
+    "volume": "Volume",
+    "voltage": "Voltagem",
+    "players": "Jogadores"
+  },
+  "action": {
+    "reboot": "Reiniciar",
+    "shutdown": "Desligar",
+    "notify": "Notificar",
+    "notify_prompt": "Mensagem para enviar ao Switch:"
+  },
+  "error": {
+    "no_entity": "Configuração de entidade obrigatória ausente",
+    "invalid_config": "Configuração inválida"
+  }
+}

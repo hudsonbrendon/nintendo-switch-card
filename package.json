@@ -1,0 +1,43 @@
+{
+  "name": "nintendo-switch-card",
+  "version": "0.1.0",
+  "description": "Lovelace card for Nintendo Switch (via switch-assistant MQTT integration)",
+  "type": "module",
+  "main": "dist/nintendo-switch-card.js",
+  "scripts": {
+    "build": "rollup -c rollup.config.mjs",
+    "watch": "rollup -c rollup.config.mjs -w",
+    "lint": "eslint 'src/**/*.ts' 'tests/**/*.ts'",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "home-assistant",
+    "lovelace",
+    "nintendo-switch",
+    "mqtt",
+    "hacs"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lit": "^3.1.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.1",
+    "@vitest/ui": "^1.2.0",
+    "eslint": "^8.56.0",
+    "jsdom": "^24.0.0",
+    "rollup": "^4.9.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}
