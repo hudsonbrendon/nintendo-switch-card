@@ -2,6 +2,7 @@ import { LitElement, html, nothing, type TemplateResult } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { CARD_NAME, CARD_VERSION } from "./const";
 import { cardStyles } from "./styles";
+import "./editor";
 import { svgHandheld } from "./assets/switch-svg";
 import { resolveEntities } from "./helpers/resolve-entities";
 import { computeStateLine } from "./helpers/compute-state-line";
@@ -67,6 +68,14 @@ export class NintendoSwitchCard extends LitElement {
 
   getCardSize(): number {
     return 5;
+  }
+
+  static getConfigElement(): HTMLElement {
+    return document.createElement("nintendo-switch-card-editor");
+  }
+
+  static getStubConfig(): { type: string; entity: string } {
+    return { type: "custom:nintendo-switch-card", entity: "nintendo_switch" };
   }
 
   private _stateOf(entityId: string): string {
