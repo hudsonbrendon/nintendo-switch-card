@@ -23,7 +23,11 @@ async function mountCard(
 }
 
 function normalize(html: string): string {
-  return html.replace(/\s+/g, " ").trim();
+  return html
+    .replace(/<!--\?lit\$\d+\$-->/g, "")
+    .replace(/<!---->/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 describe("full render scenarios", () => {
