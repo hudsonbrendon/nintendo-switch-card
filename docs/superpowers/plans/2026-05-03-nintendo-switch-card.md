@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a Lovelace custom card (`nintendo-switch-card`) that renders Nintendo Switch state from `switch-assistant` MQTT entities, in the visual style of `vacuum-card`.
+**Goal:** Build a Lovelace custom card (`nintendo-switch-card`) that renders Nintendo Switch state from `switch-assistant` MQTT entities.
 
 **Architecture:** Lit web component (TypeScript). Pure client-side: reads `hass.states`, computes view-model, renders SVG hero + stats + actions. No backend. Configuration via YAML; actions via `hass.callService`.
 
@@ -2725,7 +2725,7 @@ git status   # confirm only dist/ untracked
 ```markdown
 # Nintendo Switch Card
 
-Lovelace card for Home Assistant that displays Nintendo Switch state, in the visual style of [vacuum-card](https://github.com/denysdovhan/vacuum-card). Reads MQTT entities published by [switch-assistant](https://github.com/ErSeraph/switch-assistant).
+Lovelace card for Home Assistant that displays Nintendo Switch state. Reads MQTT entities published by [switch-assistant](https://github.com/ErSeraph/switch-assistant).
 
 ## Features
 

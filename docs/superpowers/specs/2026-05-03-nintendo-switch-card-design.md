@@ -2,14 +2,13 @@
 
 **Data:** 2026-05-03
 **Estado:** Aprovado pelo usuário (brainstorming) — pendente review final
-**Inspiração visual:** [vacuum-card](https://github.com/denysdovhan/vacuum-card)
 **Integração de dados:** [switch-assistant](https://github.com/ErSeraph/switch-assistant) (publica entidades via MQTT discovery)
 
 ---
 
 ## 1. Resumo
 
-`nintendo-switch-card` é um custom Lovelace Card para Home Assistant que exibe o estado de um Nintendo Switch (modelo original) em forma visual de console, no padrão visual do `vacuum-card`. Lê entidades MQTT publicadas pela integração `switch-assistant` e renderiza:
+`nintendo-switch-card` é um custom Lovelace Card para Home Assistant que exibe o estado de um Nintendo Switch (modelo original) em forma visual de console. Lê entidades MQTT publicadas pela integração `switch-assistant` e renderiza:
 
 - Header com badges (volume, bateria, jogadores)
 - Hero central com SVG do Nintendo Switch (Joy-Cons Neon Blue/Red acoplados)
