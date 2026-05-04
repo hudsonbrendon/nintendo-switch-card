@@ -1,8 +1,6 @@
 # Nintendo Switch Card
 
-<p align="center">
-  <img src="/hudsonbrendon/nintendo-switch-card/raw/main/assets/example.png" alt="Nintendo Switch Card example" style="max-width: 100%;">
-</p>
+![Nintendo Switch Card example](assets/example.png)
 
 Lovelace card for Home Assistant that displays Nintendo Switch state. Reads MQTT entities published by [switch-assistant](https://github.com/ErSeraph/switch-assistant).
 
