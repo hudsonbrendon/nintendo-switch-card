@@ -1,6 +1,6 @@
 # Nintendo Switch Card
 
-![Nintendo Switch Card preview](assets/preview.svg)
+![Nintendo Switch Card example](assets/example.png)
 
 Lovelace card for Home Assistant that displays Nintendo Switch state, in the visual style of [vacuum-card](https://github.com/denysdovhan/vacuum-card). Reads MQTT entities published by [switch-assistant](https://github.com/ErSeraph/switch-assistant).
 
