@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 620" font-family="-apple-system, system-ui, sans-serif">
+  <defs>
+    <linearGradient id="jcL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#26d0f0"/>
+      <stop offset="50%" stop-color="#0AB9E6"/>
+      <stop offset="100%" stop-color="#0780a3"/>
+    </linearGradient>
+    <linearGradient id="jcR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#ff2c3d"/>
+      <stop offset="50%" stop-color="#E60012"/>
+      <stop offset="100%" stop-color="#9c0010"/>
+    </linearGradient>
+    <linearGradient id="body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2e2e2e"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+    <radialGradient id="stick" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#5a5a5a"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </radialGradient>
+    <radialGradient id="btn" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#5e5e5e"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </radialGradient>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="106%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="3" result="off"/>
+      <feFlood flood-color="#000" flood-opacity="0.12"/>
+      <feComposite in2="off" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- background -->
+  <rect width="540" height="620" fill="#f4f5f7"/>
+
+  <!-- card -->
+  <g filter="url(#shadow)">
+    <rect x="20" y="20" width="500" height="580" rx="12" fill="white"/>
+
+    <!-- HEADER -->
+    <g font-size="14" fill="#666">
+      <!-- volume -->
+      <g transform="translate(40, 50)">
+        <path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor" transform="scale(0.75)"/>
+        <text x="22" y="13">40%</text>
+      </g>
+      <!-- battery (charging-pulse, green) -->
+      <g transform="translate(110, 50)" fill="#00a854">
+        <path d="M14.69 2.21L4.33 11.49c-.64.58-.28 1.65.58 1.73L13 14l-4.85 6.76c-.22.31-.19.74.08 1.01.3.3.77.31 1.08.02l10.36-9.28c.64-.58.28-1.65-.58-1.73L11 10l4.85-6.76c.22-.31.19-.74-.08-1.01-.3-.3-.77-.31-1.08-.02z" transform="scale(0.75)"/>
+        <text x="22" y="13" fill="#00a854">66%</text>
+      </g>
+      <!-- players -->
+      <g transform="translate(180, 50)">
+        <circle cx="6" cy="9" r="3" fill="#0AB9E6"/>
+        <text x="14" y="13">1 jogador</text>
+      </g>
+      <text x="486" y="58" fill="#999" font-size="20">⋮</text>
+    </g>
+
+    <!-- HERO: Switch (escala / posição) -->
+    <g transform="translate(50, 90) scale(0.73)">
+      <ellipse cx="300" cy="194" rx="270" ry="5" fill="#000" opacity="0.18"/>
+      <path d="M 22 14 Q 4 14 4 36 L 4 164 Q 4 186 22 186 L 60 186 L 60 14 Z" fill="url(#jcL)"/>
+      <circle cx="22" cy="42" r="11" fill="url(#stick)"/>
+      <circle cx="22" cy="42" r="8" fill="#0a0a0a"/>
+      <circle cx="32" cy="86" r="5" fill="url(#btn)"/>
+      <circle cx="32" cy="116" r="5" fill="url(#btn)"/>
+      <circle cx="18" cy="101" r="5" fill="url(#btn)"/>
+      <circle cx="46" cy="101" r="5" fill="url(#btn)"/>
+      <rect x="44" y="38" width="9" height="2" rx="1" fill="#0780a3"/>
+      <rect x="42" y="148" width="9" height="9" rx="1.5" fill="url(#btn)"/>
+      <rect x="60" y="14" width="3" height="172" fill="#000" opacity="0.55"/>
+      <rect x="63" y="6" width="474" height="188" rx="10" fill="url(#body)"/>
+      <rect x="71" y="20" width="458" height="160" rx="4" fill="#040404"/>
+      <rect x="79" y="26" width="442" height="148" rx="2" fill="#0a1d28"/>
+      <g font-family="monospace" fill="#00ffe1">
+        <text x="92" y="50" font-size="13" font-weight="bold">▶ ZELDA: TOTK</text>
+        <text x="92" y="68" font-size="9" opacity="0.6">ID 4200000000007e51a</text>
+        <line x1="92" y1="76" x2="510" y2="76" stroke="#00ffe1" stroke-width="0.4" opacity="0.3"/>
+        <text x="92" y="92" font-size="9" opacity="0.85">BATTERY      66% ⚡</text>
+        <text x="92" y="106" font-size="9" opacity="0.85">VOLTAGE      4.123 V</text>
+        <text x="92" y="120" font-size="9" opacity="0.85">HEALTH       103%</text>
+        <text x="92" y="134" font-size="9" opacity="0.85">CHARGER      enough_power</text>
+        <text x="92" y="148" font-size="9" opacity="0.85">VOL 40%   ·   BRILHO 100%</text>
+        <text x="92" y="162" font-size="9" opacity="0.7">P1 handheld   ·   Audio: speaker</text>
+      </g>
+      <rect x="294" y="190" width="14" height="2" rx="1" fill="#000" opacity="0.7"/>
+      <rect x="537" y="14" width="3" height="172" fill="#000" opacity="0.55"/>
+      <path d="M 540 14 L 540 186 L 578 186 Q 596 186 596 164 L 596 36 Q 596 14 578 14 Z" fill="url(#jcR)"/>
+      <circle cx="572" cy="42" r="6" fill="url(#btn)"/>
+      <text x="572" y="45" font-size="7" fill="#aaa" text-anchor="middle" font-weight="bold">X</text>
+      <circle cx="586" cy="56" r="6" fill="url(#btn)"/>
+      <text x="586" y="59" font-size="7" fill="#aaa" text-anchor="middle" font-weight="bold">A</text>
+      <circle cx="558" cy="56" r="6" fill="url(#btn)"/>
+      <text x="558" y="59" font-size="7" fill="#aaa" text-anchor="middle" font-weight="bold">Y</text>
+      <circle cx="572" cy="70" r="6" fill="url(#btn)"/>
+      <text x="572" y="73" font-size="7" fill="#aaa" text-anchor="middle" font-weight="bold">B</text>
+      <circle cx="578" cy="138" r="11" fill="url(#stick)"/>
+      <circle cx="578" cy="138" r="8" fill="#0a0a0a"/>
+      <g stroke="#9c0010" stroke-width="2" stroke-linecap="round">
+        <line x1="548" y1="38" x2="556" y2="38"/>
+        <line x1="552" y1="34" x2="552" y2="42"/>
+      </g>
+      <circle cx="552" cy="158" r="5" fill="#0a0a0a"/>
+      <circle cx="552" cy="158" r="4.5" fill="none" stroke="#aaa" stroke-width="0.6" opacity="0.4"/>
+    </g>
+
+    <!-- NAME + STATE LINE -->
+    <text x="270" y="290" text-anchor="middle" font-size="20" font-weight="600" fill="#2c2c2c">Nintendo Switch</text>
+    <text x="270" y="310" text-anchor="middle" font-size="14" fill="#00a854" font-weight="500">⚡ Carregando · enough_power</text>
+
+    <!-- STATS GRID -->
+    <line x1="20" y1="335" x2="520" y2="335" stroke="#eee"/>
+    <g font-size="20" font-weight="500" fill="#2c2c2c" text-anchor="middle">
+      <text x="82.5" y="370">100<tspan font-size="12" fill="#888"> %</tspan></text>
+      <text x="207.5" y="370">40<tspan font-size="12" fill="#888"> %</tspan></text>
+      <text x="332.5" y="370">4.12<tspan font-size="12" fill="#888"> V</tspan></text>
+      <text x="457.5" y="370">1<tspan font-size="12" fill="#888">/8</tspan></text>
+    </g>
+    <g font-size="12" fill="#888" text-anchor="middle">
+      <text x="82.5" y="388">Brilho</text>
+      <text x="207.5" y="388">Volume</text>
+      <text x="332.5" y="388">Voltagem</text>
+      <text x="457.5" y="388">Jogadores</text>
+    </g>
+    <g stroke="#eee" stroke-width="1">
+      <line x1="145" y1="345" x2="145" y2="400"/>
+      <line x1="270" y1="345" x2="270" y2="400"/>
+      <line x1="395" y1="345" x2="395" y2="400"/>
+    </g>
+    <line x1="20" y1="410" x2="520" y2="410" stroke="#eee"/>
+
+    <!-- TOOLBAR -->
+    <g transform="translate(40, 425)">
+      <!-- reboot -->
+      <g fill="#666">
+        <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+      </g>
+      <g transform="translate(40, 0)" fill="#666">
+        <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42A6.92 6.92 0 0 1 19 12a7 7 0 0 1-14 0 6.92 6.92 0 0 1 2.59-5.41L6.17 5.17A8.932 8.932 0 0 0 3 12a9 9 0 0 0 18 0c0-2.74-1.23-5.18-3.17-6.83z"/>
+      </g>
+    </g>
+    <g transform="translate(380, 425)">
+      <g fill="#666">
+        <path d="M21 3H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7v2H8v2h8v-2h-2v-2h7a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zm0 14H3V5h18v12z"/>
+      </g>
+      <g transform="translate(40, 0)" fill="#666">
+        <path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2zm6-6V11c0-3.07-1.64-5.64-4.5-6.32V4a1.5 1.5 0 0 0-3 0v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+      </g>
+      <g transform="translate(80, 0)" fill="#666">
+        <path d="M3 9v6h4l5 5V4L7 9H3z"/>
+      </g>
+    </g>
+
+    <!-- caption below card -->
+    <text x="270" y="500" text-anchor="middle" font-size="13" fill="#999">Nintendo Switch Card · vacuum-card style · MQTT via switch-assistant</text>
+  </g>
+
+  <!-- title under card -->
+  <g text-anchor="middle">
+    <text x="270" y="555" font-size="22" font-weight="700" fill="#222">nintendo-switch-card</text>
+    <text x="270" y="580" font-size="14" fill="#666">Lovelace card for Home Assistant</text>
+  </g>
+</svg>
