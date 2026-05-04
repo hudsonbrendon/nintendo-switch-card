@@ -1,6 +1,6 @@
 export const CARD_NAME = "nintendo-switch-card";
 export const EDITOR_NAME = `${CARD_NAME}-editor`;
-export const CARD_VERSION = "0.1.0";
+export const CARD_VERSION = "0.1.1";
 
 export const ENTITY_SUFFIXES = {
   battery_level: "battery_level",

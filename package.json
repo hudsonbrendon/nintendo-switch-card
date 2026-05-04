@@ -1,6 +1,6 @@
 {
   "name": "nintendo-switch-card",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lovelace card for Nintendo Switch (via switch-assistant MQTT integration)",
   "type": "module",
   "main": "dist/nintendo-switch-card.js",
