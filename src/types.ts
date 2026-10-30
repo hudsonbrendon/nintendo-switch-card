@@ -52,9 +52,19 @@ export interface HassState {
   attributes: Record<string, unknown>;
 }
 
+// Subset of the HA frontend entity-registry display entry (`hass.entities`).
+export interface EntityRegistryEntry {
+  entity_id: string;
+  platform?: string;
+  device_id?: string;
+}
+
 export interface HassObject {
   states: Record<string, HassState>;
+  entities?: Record<string, EntityRegistryEntry>;
   locale: { language: string };
+  themes?: { darkMode?: boolean };
+  formatEntityState?: (stateObj: HassState, state?: string) => string;
   callService: (
     domain: string,
     service: string,

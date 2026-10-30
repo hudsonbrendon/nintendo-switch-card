@@ -8,9 +8,9 @@ export default {
   input: "src/nintendo-switch-card.ts",
   output: {
     file: "dist/nintendo-switch-card.js",
-    format: "iife",
-    name: "NintendoSwitchCard",
+    format: "es",
     sourcemap: true,
+    inlineDynamicImports: true,
   },
   plugins: [
     resolve({ browser: true }),

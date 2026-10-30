@@ -1,19 +1,23 @@
 import { describe, it, expect } from "vitest";
 import "../src/nintendo-switch-card";
-import { EDITOR_NAME } from "../src/const";
+import { CARD_NAME } from "../src/const";
 
 interface CardCtor extends CustomElementConstructor {
-  getConfigElement(): HTMLElement;
+  getConfigForm(): { schema: Array<{ name: string }>; computeLabel(s: { name: string }): string };
+  getConfigElement?: unknown;
 }
 
 describe("editor", () => {
-  it("registers editor element", () => {
-    expect(customElements.get(EDITOR_NAME)).toBeTruthy();
+  const Card = customElements.get(CARD_NAME) as CardCtor;
+
+  it("exposes an ha-form schema via getConfigForm", () => {
+    const form = Card.getConfigForm();
+    expect(form.schema.map((s) => s.name)).toContain("entity");
+    expect(form.computeLabel({ name: "name" })).toBe("Name");
   });
 
-  it("getConfigElement returns the editor element", () => {
-    const Card = customElements.get("nintendo-switch-card") as CardCtor;
-    const el = Card.getConfigElement();
-    expect(el.tagName.toLowerCase()).toBe(EDITOR_NAME);
+  it("no longer ships a stub editor element", () => {
+    expect(Card.getConfigElement).toBeUndefined();
+    expect(customElements.get(`${CARD_NAME}-editor`)).toBeUndefined();
   });
 });
