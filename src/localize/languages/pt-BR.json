@@ -20,5 +20,12 @@
   "error": {
     "no_entity": "Configuração de entidade obrigatória ausente",
     "invalid_config": "Configuração inválida"
+  },
+  "editor": {
+    "entity": "Prefixo das entidades (slug do dispositivo)",
+    "name": "Nome",
+    "image": "URL de imagem personalizada",
+    "compact": "Modo compacto",
+    "language": "Idioma"
   }
 }

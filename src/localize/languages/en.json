@@ -20,5 +20,12 @@
   "error": {
     "no_entity": "Missing required entity configuration",
     "invalid_config": "Invalid configuration"
+  },
+  "editor": {
+    "entity": "Entity prefix (device slug)",
+    "name": "Name",
+    "image": "Custom image URL",
+    "compact": "Compact view",
+    "language": "Language"
   }
 }

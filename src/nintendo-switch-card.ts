@@ -1,10 +1,9 @@
-import { LitElement, html, nothing, type TemplateResult } from "lit";
+import { LitElement, html, nothing, type PropertyValues, type TemplateResult } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { CARD_NAME, CARD_VERSION } from "./const";
 import { cardStyles } from "./styles";
-import "./editor";
 import { svgHandheld } from "./assets/switch-svg";
-import { resolveEntities } from "./helpers/resolve-entities";
+import { resolveEntities, suggestPrefix } from "./helpers/resolve-entities";
 import { computeStateLine } from "./helpers/compute-state-line";
 import { formatStat } from "./helpers/format-stat";
 import { localize } from "./localize";
@@ -23,7 +22,7 @@ console.info(
 );
 
 interface CustomCardWindow extends Window {
-  customCards?: Array<{ type: string; name: string; description: string; preview: boolean }>;
+  customCards?: Array<Record<string, unknown>>;
 }
 const w = window as CustomCardWindow;
 w.customCards = w.customCards || [];
@@ -32,6 +31,12 @@ w.customCards.push({
   name: "Nintendo Switch Card",
   description: "Card for Nintendo Switch via switch-assistant MQTT integration",
   preview: false,
+  documentationURL: "https://github.com/hudsonbrendon/nintendo-switch-card",
+  // Offer this card when the user picks the console's MQTT battery sensor.
+  getEntitySuggestion: (hass: HassObject, entityId: string) => {
+    const prefix = suggestPrefix(hass, entityId);
+    return prefix ? { config: { type: `custom:${CARD_NAME}`, entity: prefix } } : null;
+  },
 });
 
 @customElement(CARD_NAME)
@@ -70,8 +75,35 @@ export class NintendoSwitchCard extends LitElement {
     return 5;
   }
 
-  static getConfigElement(): HTMLElement {
-    return document.createElement("nintendo-switch-card-editor");
+  getGridOptions() {
+    return this._config?.compact
+      ? { columns: 6, rows: 3, min_columns: 4, min_rows: 3 }
+      : { columns: 6, rows: 5, min_columns: 4, min_rows: 4 };
+  }
+
+  static getConfigForm() {
+    return {
+      schema: [
+        { name: "entity", required: true, selector: { text: {} } },
+        { name: "name", selector: { text: {} } },
+        { name: "image", selector: { text: {} } },
+        {
+          type: "grid",
+          name: "",
+          schema: [
+            { name: "compact", selector: { boolean: {} } },
+            { name: "language", selector: { select: { options: ["en", "pt-BR"], mode: "dropdown" } } },
+          ],
+        },
+      ],
+      computeLabel: (schema: { name: string }) => localize(`editor.${schema.name}`),
+    };
+  }
+
+  protected willUpdate(changed: PropertyValues): void {
+    if (changed.has("hass")) {
+      this.toggleAttribute("dark-mode", Boolean(this.hass?.themes?.darkMode));
+    }
   }
 
   static getStubConfig(): { type: string; entity: string } {
@@ -81,6 +113,18 @@ export class NintendoSwitchCard extends LitElement {
   private _stateOf(entityId: string): string {
     if (!this.hass || !entityId) return "unavailable";
     return this.hass.states[entityId]?.state ?? "unavailable";
+  }
+
+  // Locale-aware display of a plain state; falls back to the raw state.
+  private _displayState(entityId: string): string {
+    const stateObj = this.hass?.states[entityId];
+    const raw = stateObj?.state ?? "unavailable";
+    if (!stateObj || ["unavailable", "unknown"].includes(raw)) return "—";
+    try {
+      return this.hass?.formatEntityState?.(stateObj) ?? raw;
+    } catch {
+      return raw;
+    }
   }
 
   private _resolveLang(): string {
@@ -118,7 +162,7 @@ export class NintendoSwitchCard extends LitElement {
           ${playerVisible
             ? html`<div class="header-item players">
                 <ha-icon icon="mdi:account"></ha-icon>
-                <span>${playerCount}</span>
+                <span>${this._displayState(ents.player_count)}</span>
               </div>`
             : nothing}
         </div>
@@ -172,12 +216,15 @@ export class NintendoSwitchCard extends LitElement {
       <div class="stats">
         ${stats.map((s) => {
           const raw = this._stateOf(s.entity);
-          const formatted = formatStat(raw, {
-            unit: s.unit,
-            multiply: s.multiply,
-            precision: s.precision,
-            suffix: s.suffix,
-          });
+          const plain = !s.unit && !s.multiply && s.precision === undefined && !s.suffix;
+          const formatted = plain
+            ? this._displayState(s.entity)
+            : formatStat(raw, {
+                unit: s.unit,
+                multiply: s.multiply,
+                precision: s.precision,
+                suffix: s.suffix,
+              });
           const label = s.subtitle.startsWith("stat.")
             ? localize(s.subtitle, lang)
             : s.subtitle;

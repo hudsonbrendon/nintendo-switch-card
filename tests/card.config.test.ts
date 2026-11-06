@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import "../src/nintendo-switch-card";
 import { CARD_NAME } from "../src/const";
+import type { NintendoSwitchCardConfig } from "../src/types";
 
 interface CardEl extends HTMLElement {
   setConfig(config: unknown): void;
@@ -67,5 +68,18 @@ describe("setConfig", () => {
     expect(() =>
       c.setConfig({ type: `custom:${CARD_NAME}`, entity: "ns", image: "switch-default" })
     ).not.toThrow();
+  });
+});
+
+describe("getGridOptions", () => {
+  it("shrinks in compact mode", () => {
+    const c = document.createElement(CARD_NAME) as HTMLElement & {
+      setConfig(c: NintendoSwitchCardConfig): void;
+      getGridOptions(): { rows: number; columns: number };
+    };
+    c.setConfig({ type: `custom:${CARD_NAME}`, entity: "ns" });
+    expect(c.getGridOptions()).toMatchObject({ rows: 5, columns: 6 });
+    c.setConfig({ type: `custom:${CARD_NAME}`, entity: "ns", compact: true });
+    expect(c.getGridOptions().rows).toBe(3);
   });
 });
